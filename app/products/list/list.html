@@ -1,0 +1,38 @@
+<md-content flex layout="row" layout-align="start start" layout-fill class="md-padding">
+    <md-card flex="33" layout="column" class="md-padding">
+        <md-list layout="column">
+            <md-list-item class="md-2-line selected" ng-repeat="product in product.products track by $index" ng-click="product.setSelectedProduct($event, product)" ng-class="{'selected': product.id === product.selectedProduct.id}">
+                <div class="md-list-item-text" layout="row">
+                    <div flex>
+                    <h3>{{product.name}}</h3>
+                    <p>{{product.category}}</p>
+                    </div>
+                    <div>
+                        <h3><strong>{{product.rating}}</strong></h3>
+                        <p class="md-caption">{{product.ordersCount}} orders</p>
+                    </div>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card>
+    <md-content layout="column" flex>
+        <md-card flex>
+            <md-content class="md-padding md-margin" layout="row">
+                <div flex>
+                    <h1 class="md-display-3">Skip Score</h1>
+                    <p>{{product.currentSkipScore.category}}</p>
+                </div>
+                <div>
+                    <h1 class="md-display-3 green-text">{{product.currentSkipScore.score}}</h1>
+                    <p>This week</p>
+                </div>
+            </md-content>
+        </md-card>
+        <md-card flex>
+                <canvas id="line" class="chart chart-line" chart-data="product.data"
+                chart-labels="labels" chart-series="series" chart-options="options"
+                chart-dataset-override="datasetOverride">
+                </canvas
+        </md-card>
+    </md-content>
+</md-content>
